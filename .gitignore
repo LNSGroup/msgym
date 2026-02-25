@@ -1,0 +1,37 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (uv/venv)
+.venv/
+venv/
+.env/
+uv.lock
+.python-version
+
+# Packaging/build artifacts
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+__pypackages__/
+
+# Logs & outputs
+log/
+logs/
+data/
+MUJOCO_LOG.TXT
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,50 @@
+{
+    "agent": "SAC_DynSyn",
+    "agent_kwargs": {
+        "learning_rate": "linear_schedule(0.001)",
+        "gradient_steps": 1,
+        "policy_kwargs": {
+            "dynsyn": [[0,1,5],[2,3,16],[4],[6,23,30,31],[7,12],[8,9,34],[10,11,35],[13],[14],[15],[17,20,21],[18,22],[19,27],[24],[25,26],[28],[29,33],[32],[36,37,38],[39,40,41,42,43,44,45,46,47,48,49],[50,51,55],[52,53,66],[54],[56,73,80,81],[57,62],[58,59,84],[60,61,85],[63],[64],[65],[67,70,71],[68,72],[69,77],[74],[75,76],[78],[79,83],[82],[86,87,88],[89,90,91,92,93,94,95,96,97,98,99]],
+            "dynsyn_log_std": 0.5,
+            "use_sde": false
+        },
+        "dynsyn_k": 5e-9,
+        "dynsyn_a": 5e6
+    },
+    "env_name": "msgym/LocomotionLegsEnv-v1",
+    "env_nums": 64,
+    "single_env_kwargs": {
+        "skip_frames": 10,
+        "reset_noise_scale": 0.001,
+        "qpos_diff_th": 0.06,
+        "gait_cycles": 3,
+        "random_init": true,
+        "reward_dict": {
+            "w_qpos": 50, 
+            "w_xpos": 50,
+            "w_pelvis": 100,
+            "w_energy": 0.1, 
+            "w_healthy": 50
+        }
+    },
+    "wrapper_list": {
+        "MuscleNormWrapper": {}
+    },
+    "vec_normalize": {
+        "is_norm": true,
+        "kwargs": {
+            "norm_obs": true,
+            "norm_reward": false,
+            "clip_obs": 10.0
+        }
+    },
+    "total_timesteps": 1e7,
+    "play": false,
+    "load_model_dir": "",
+    "check_freq": 1e6,
+    "record_freq": 1e6,
+    "dump_freq": 0,
+    "reward_freq": 1000,
+    "log_root_dir": "./logs",
+    "seed": 0
+}
