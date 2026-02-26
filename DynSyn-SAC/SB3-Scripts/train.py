@@ -11,14 +11,18 @@ import argparse
 import importlib
 import json
 import os
+import random
 import shutil
 import time
 from pathlib import Path
 from typing import Any, List
 import gymnasium
+import numpy as np
 import sb3_contrib
 import stable_baselines3 as sb3
+import torch
 from stable_baselines3.common.callbacks import CheckpointCallback, EvalCallback
+from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.vec_env import VecNormalize
 from DynSyn import SAC_DynSyn
 from callback import (
@@ -33,6 +37,23 @@ from utils import create_vec_env
 _CUSTOM_AGENTS = {
     "SAC_DynSyn": SAC_DynSyn,
 }
+
+
+def set_global_determinism(seed: int) -> None:
+    """Seed global RNGs used during training setup and model initialization."""
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    set_random_seed(seed, using_cuda=torch.cuda.is_available())
+    if torch.backends.cudnn.is_available():
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+    try:
+        torch.use_deterministic_algorithms(True, warn_only=True)
+    except Exception:
+        pass
 
 
 def _ensure_env_registered(env_name: str) -> None:
@@ -164,6 +185,8 @@ def find_env_file(env_name: str) -> Any:
 
 def train(args: argparse.Namespace, config_str: str) -> None:
     """Run training: set up dirs, build env, create/load agent, train, and save."""
+    set_global_determinism(getattr(args, "seed", 0))
+
     # Set up new training session
     log_name = args.config_name
     env_name_log = args.env_name.split("/")[-1]

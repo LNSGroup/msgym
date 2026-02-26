@@ -38,7 +38,7 @@
             "clip_obs": 10.0
         }
     },
-    "total_timesteps": 1e7,
+    "total_timesteps": 5e6,
     "play": false,
     "load_model_dir": "",
     "check_freq": 1e6,

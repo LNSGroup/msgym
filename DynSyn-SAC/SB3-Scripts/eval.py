@@ -80,7 +80,6 @@ def evaluate(args: argparse.Namespace) -> None:
         arg_config.env_name,
         arg_config.single_env_kwargs,
         arg_config.wrapper_list,
-        0,
         render_mode="rgb_array",
     )
     vec_norm_path = os.path.join(checkpoint_dir, "best_env.zip")

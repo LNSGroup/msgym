@@ -4,7 +4,7 @@ import numpy as np
 import mujoco
 from gymnasium import spaces
 from gymnasium.envs.mujoco.mujoco_env import MujocoEnv
-from gymnasium.utils import EzPickle
+from gymnasium.utils import EzPickle, seeding
 from msgym.envs.utils import action_obs_check, euler2quat, get_render_fps
 
 class ManipulationEnvV1(MujocoEnv, EzPickle):
@@ -130,9 +130,11 @@ class ManipulationEnvV1(MujocoEnv, EzPickle):
         print("observation space shape:", self.observation_space.shape)
         print("action space shape:", self.action_space.shape)
 
-    def seed(self, seed: int = 0) -> None:
-        """Compatibility placeholder; Gymnasium uses reset(seed=...)."""
-        pass
+    def seed(self, seed: int = 0) -> list[int]:
+        """Compatibility API for callers that still use env.seed(seed)."""
+        self._np_random, seeded = seeding.np_random(seed)
+        self._np_random_seed = seeded
+        return [seeded]
 
     @property
     def terminated(self) -> bool:

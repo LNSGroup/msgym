@@ -18,7 +18,7 @@
         "target_pos_range": [[-0.03, -0.03, 0.25], [0.03, 0.03, 0.35]],
         "target_ori_range": [[-0.1, -0.1], [0.1, 0.1]],
         "reward_dict": {
-            "w_pos": 40, 
+            "w_pos": 50, 
             "k_pos": 10.0,
             "w_ori": 10, 
             "k_ori": 2.0,

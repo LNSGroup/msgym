@@ -106,7 +106,7 @@ class TensorboardCallback(BaseCallback):
             self.info_dict = {
                 k: v
                 for k, v in self.info_dict.items()
-                if isinstance(v, (int, float))
+                if isinstance(v, (int, float, bool, np.integer, np.floating, np.bool_))
             }
             self.rollout_info = {key: [] for key in self.info_dict}
         if self.reward_freq != 0 and self.n_rollout % self.reward_freq == 0:

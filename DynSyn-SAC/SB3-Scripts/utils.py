@@ -2,7 +2,6 @@ from typing import Any, Dict, Optional
 import gymnasium as gym
 import numpy as np
 from stable_baselines3.common.env_util import make_vec_env
-from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.vec_env import SubprocVecEnv, VecEnv, VecVideoRecorder
 from wrapper import *
 
@@ -26,7 +25,6 @@ def create_env(
     env_name: str,
     single_env_kwargs: Dict[str, Any],
     wrapper_list: Dict[str, Any],
-    seed: int = 0,
     render_mode: Optional[str] = None,
 ) -> gym.Env:
     """Create a single environment with optional wrappers.
@@ -35,14 +33,12 @@ def create_env(
         env_name: Gymnasium environment ID.
         single_env_kwargs: Keyword arguments passed to gym.make.
         wrapper_list: Dict mapping wrapper class names to their kwargs.
-        seed: Random seed for the environment.
         render_mode: Render mode passed to gym.make.
 
     Returns:
         The wrapped environment.
     """
     _ensure_env_registered(env_name)
-    set_random_seed(seed)
     env = gym.make(env_name, render_mode=render_mode, **single_env_kwargs)
     for wrapper_name, wrapper_args in wrapper_list.items():
         try:
@@ -73,10 +69,10 @@ def create_vec_env(
             "env_name": env_name,
             "single_env_kwargs": single_env_kwargs,
             "wrapper_list": wrapper_list,
-            "seed": seed,
             "render_mode": render_mode,
         },
         n_envs=env_nums,
+        seed=seed,
         vec_env_cls=SubprocVecEnv,
         monitor_dir=monitor_dir,
         monitor_kwargs=monitor_kwargs,
