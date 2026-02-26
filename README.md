@@ -6,25 +6,23 @@
   <a href="https://lnsgroup.cc/research/MS-Human">Project page</a> | <a href="https://github.com/LNSGroup/MS-Human-700">MS-Human-700 Model</a>
 </p>
 
----
-
-## Overview
-
-MS-Human-700 is a full-body human musculoskeletal model with anatomically detailed body, joint, and muscle parameters. It includes 700 muscle–tendon units. For modeling and control details, see the [ICRA 2024 paper](https://arxiv.org/abs/2312.05473), [ICML 2024 paper](https://arxiv.org/abs/2407.11472), and [ICLR 2025 paper](https://arxiv.org/pdf/2505.08238).
-
-This repository wraps MS-Human-700 as a Python package **msgym** so you can use it with `gymnasium.make()` after a standard install.
 
 <div align="center">
   <img src="pictures/ms_human_render_front.png" width="40%">
   <img src="pictures/render_gif.gif" width="40%">
 </div>
 
-<div align="center">
-  <img src="pictures/loco_full_gif.gif" width="40%">
-  <img src="pictures/mani_gif.gif" width="40%">
-</div>
+## Overview
 
----
+MS-Human-700 is a full-body human musculoskeletal model with anatomically detailed body, joint, and muscle parameters. It includes 700 muscle–tendon units.
+
+Related papers:
+- [MS-Human-700 (ICRA 2024)](https://arxiv.org/abs/2312.05473)
+- [DynSyn (ICML 2024)](https://arxiv.org/abs/2407.11472)
+- [MPC2 (ICLR 2025)](https://arxiv.org/abs/2505.08238)
+- [QFlex (ICLR 2026)](https://arxiv.org/abs/2601.19707)
+
+This repository wraps MS-Human-700 as a Python package **msgym** so you can use it with `gymnasium.make()` after a standard install.
 
 ## Installation
 
@@ -57,20 +55,11 @@ After this, `import msgym` and `gymnasium.make("msgym/...")` work in your enviro
 
 ### Optional: DynSyn-SAC training
 
-For DynSyn-SAC reinforcement learning training, install the optional dependency set:
+For [DynSyn](https://github.com/Beanpow/DynSyn) reinforcement learning training, install the optional dependency set.
 
 ```bash
 uv sync --extra dynsyn
 ```
-
-Then run training/evaluation directly from the repo root:
-
-```bash
-uv run python DynSyn-SAC/SB3-Scripts/train.py -f DynSyn-SAC/configs/locomotionFull.json
-uv run python DynSyn-SAC/SB3-Scripts/eval.py -f DynSyn-SAC/logs/LocomotionFull -n 3
-```
-
----
 
 ## Usage
 
@@ -89,10 +78,10 @@ env.close()
 **Registered environment IDs:**
 
 | Environment ID                    | Description                          |
-|-----------------------------------|--------------------------------------
+|-----------------------------------|--------------------------------------|
 | `msgym/LocomotionFullEnv-v1`      | Full-body locomotion imitation       |
 | `msgym/LocomotionLegsEnv-v1`      | Legs-only locomotion imitation       |
-| `msgym/ManipulationEnv-v1`         | Right-arm manipulation (reach/lift)   |
+| `msgym/ManipulationEnv-v1`         | Right-arm manipulation (grasp/lift)   |
 
 Run the test script from the repo root:
 
@@ -103,8 +92,6 @@ uv run python env_test.py
 > **Headless / no display:**  
 > 1. Use `render_mode="rgb_array"` (or omit rendering).  
 > 2. For offscreen rendering, set `MUJOCO_GL=egl` (e.g. `export MUJOCO_GL=egl` or `$env:MUJOCO_GL="egl"` on Windows).
-
----
 
 ## Training (DynSyn-SAC)
 
@@ -124,13 +111,9 @@ CUDA_VISIBLE_DEVICES=0 MUJOCO_GL=egl uv run python DynSyn-SAC/SB3-Scripts/eval.p
 
 Trained checkpoints are available from GitHub Releases.
 
----
-
 ## License
 
 This project is released under the [Apache-2.0 License](LICENSE).
-
----
 
 ## Citation
 
@@ -148,6 +131,16 @@ If you use MS-Human-700 or msgym in academic work, please cite:
 ```
 
 ## Control Demo
+
+[DynSyn](https://github.com/Beanpow/DynSyn) control results:
+
+<div align="center">
+  <img src="pictures/loco_full_gif.gif" width="32%">
+  <img src="pictures/loco_legs_gif.gif" width="32%">
+  <img src="pictures/mani_gif.gif" width="32%">
+</div>
+
+[QFlex](https://lnsgroup.cc/research/Qflex) control results:
 
 <div align="center">
   <img src="pictures/run_gif.gif" width="49%">

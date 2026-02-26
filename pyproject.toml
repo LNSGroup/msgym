@@ -27,6 +27,7 @@ dynsyn = [
     "moviepy>=1.0.3",
     "gymnasium>=0.29.1",
     "tensorboard>=2.12.1",
+    "setuptools<81",
 ]
 
 [tool.setuptools.packages.find]
