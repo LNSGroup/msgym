@@ -1,9 +1,10 @@
 # msgym: Gymnasium Environments for MusculoSkeletal Models
 
-[Gymnasium](https://gymnasium.farama.org/) environments for the **MS-Human-700** full-body human musculoskeletal model in [MuJoCo](https://mujoco.readthedocs.io/). This repository provides reinforcement learning–ready simulation environments for locomotion and manipulation tasks.
+[Gymnasium](https://gymnasium.farama.org/) environments for the **MS-Human-700** full-body human musculoskeletal model in [MuJoCo](https://mujoco.readthedocs.io/). 
+This repository provides reinforcement learning–ready simulation environments for locomotion and manipulation tasks.
 
 <p align="center">
-  <a href="https://lnsgroup.cc/research/MS-Human">Project page</a> | <a href="https://github.com/LNSGroup/MS-Human-700">MS-Human-700 Model</a>
+  <a href="https://lnsgroup.cc/research/MS-Human">Project Page</a> | <a href="https://github.com/LNSGroup/MS-Human-700">MS-Human-700 Model</a>
 </p>
 
 
@@ -14,13 +15,14 @@
 
 ## Overview
 
-MS-Human-700 is a full-body human musculoskeletal model with anatomically detailed body, joint, and muscle parameters. It includes 700 muscle–tendon units.
+MS-Human-700 is a whole-body human musculoskeletal model with anatomically detailed body, joint, and muscle parameters. It includes 700 muscle–tendon units.
 
 Related papers:
 - [MS-Human-700 (ICRA 2024)](https://arxiv.org/abs/2312.05473)
 - [DynSyn (ICML 2024)](https://arxiv.org/abs/2407.11472)
 - [MPC2 (ICLR 2025)](https://arxiv.org/abs/2505.08238)
 - [QFlex (ICLR 2026)](https://arxiv.org/abs/2601.19707)
+- [and more (on balance & fall, contact-rich & deformable, vision language model ...)](https://lnsgroup.cc/publications.html)
 
 This repository wraps MS-Human-700 as a Python package **msgym** so you can use it with `gymnasium.make()` after a standard install.
 
