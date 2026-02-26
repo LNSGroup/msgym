@@ -147,7 +147,9 @@ If you use MS-Human-700 or msgym in academic work, please cite:
   <img src="pictures/dance_gif.gif" width="49%">
 </div>
 
-High-Fidelity Motion Tracking (in development) results: Leveraging MuJoCo Warp for massively parallel GPU simulation enables the rapid and efficient training of control policies capable of high-precision motion tracking across diverse and dynamic trajectories.
+High-Fidelity Motion Tracking (in development) results: 
+
+Leveraging MuJoCo Warp for massively parallel GPU simulation enables the rapid and efficient training of control policies capable of high-precision motion tracking across diverse and dynamic trajectories.
 
 The demos below illustrate these tracking capabilities of the MS-Human model:
 *   **Overlap**: The model and reference trajectory are rendered directly to visualize tracking accuracy.
@@ -155,23 +157,19 @@ The demos below illustrate these tracking capabilities of the MS-Human model:
 
 <table>
   <tr>
-    <td align="center" width="50%">
-      <b>Running (Overlap)</b><br>
-      <video src="https://github.com/user-attachments/assets/a4d3a10d-2eba-4e69-b86d-e9cbac8e9045" width="100%" controls autoplay loop muted></video>
+    <td align="center" width="25%">
+      <video src="https://github.com/user-attachments/assets/32d4a4a9-6834-4f37-9df1-ebf7b6af0753" width="100%" controls autoplay loop muted></video>
     </td>
-    <td align="center" width="50%">
-      <b>Running (Separate)</b><br>
-      <video src="https://github.com/user-attachments/assets/313f4ca9-096f-49e6-93fc-c0567c4f1b5e" width="100%" controls autoplay loop muted></video>
+    <td align="center" width="25%">
+      <video src="https://github.com/user-attachments/assets/d0961f7a-18c5-49a6-bb24-09b6da265a19" width="100%" controls autoplay loop muted></video>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <b>Walking (Overlap)</b><br>
-      <video src="https://github.com/user-attachments/assets/d09dfbf3-5955-4d13-9f81-057a112be3f5" width="100%" controls autoplay loop muted></video>
+    <td align="center" width="25%">
+      <video src="https://github.com/user-attachments/assets/2d0fa676-dea5-4eb5-9397-8bbf9f452ff9" width="100%" controls autoplay loop muted></video>
     </td>
-    <td align="center" width="50%">
-      <b>Walking (Separate)</b><br>
-      <video src="https://github.com/user-attachments/assets/312f2953-e5c1-4728-bd76-44640f61b0e7" width="100%" controls autoplay loop muted></video>
+    <td align="center" width="25%">
+      <video src="https://github.com/user-attachments/assets/28e6b539-9763-4cb0-8093-b91c8ac9327c" width="100%" controls autoplay loop muted></video>
     </td>
   </tr>
 </table>
