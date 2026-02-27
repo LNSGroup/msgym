@@ -21,7 +21,7 @@
     "single_env_kwargs": {
         "skip_frames": 10,
         "reset_noise_scale": 0.001,
-        "qpos_diff_th": 0.06,
+        "qpos_diff_th": 0.10,
         "gait_cycles": 3,
         "random_init": true,
         "reward_dict": {
