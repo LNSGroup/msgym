@@ -22,7 +22,7 @@ Related papers:
 - [DynSyn (ICML 2024)](https://arxiv.org/abs/2407.11472)
 - [MPC2 (ICLR 2025)](https://arxiv.org/abs/2505.08238)
 - [QFlex (ICLR 2026)](https://arxiv.org/abs/2601.19707)
-- [and more (on balance & fall, contact-rich & deformable, vision language model ...)](https://lnsgroup.cc/publications.html)
+- [and more (on balance & fall, contact-rich & deformable, vision language model ...)](https://lnsgroup.cc/research/MS-Human#papers)
 
 This repository wraps MS-Human-700 as a Python package **msgym** so you can use it with `gymnasium.make()` after a standard install.
 
@@ -134,7 +134,7 @@ If you use MS-Human-700 or msgym in academic work, please cite:
 
 ## Control Demo
 
-[DynSyn](https://github.com/Beanpow/DynSyn) control results:
+[**DynSyn**](https://github.com/Beanpow/DynSyn) control results:
 
 <div align="center">
   <img src="pictures/loco_full_gif.gif" width="32%">
@@ -142,14 +142,14 @@ If you use MS-Human-700 or msgym in academic work, please cite:
   <img src="pictures/mani_gif.gif" width="32%">
 </div>
 
-[QFlex](https://lnsgroup.cc/research/Qflex) control results:
+[**QFlex**](https://lnsgroup.cc/research/Qflex) control results:
 
 <div align="center">
   <img src="pictures/run_gif.gif" width="49%">
   <img src="pictures/dance_gif.gif" width="49%">
 </div>
 
-High-Fidelity Motion Tracking (in development) results: 
+**High-Fidelity Motion Tracking** results: 
 
 Leveraging MuJoCo Warp for massively parallel GPU simulation enables the rapid and efficient training of control policies capable of high-precision motion tracking across diverse and dynamic trajectories.
 
@@ -176,4 +176,15 @@ The demos below illustrate these tracking capabilities of the MS-Human model:
   </tr>
 </table>
 
+[**Contact-Rich Deformable Interaction**](https://lnsgroup.cc/research/SoftHand) simulation results:
 
+<table>
+  <tr>
+    <td align="center" width="40%">
+      <video src="https://github.com/user-attachments/assets/3e46de52-ca3a-4c2d-b042-372a6a630e65" width="100%" controls autoplay loop muted></video>
+    </td>
+    <td align="center" width="55%">
+      <img src="https://github.com/user-attachments/assets/ccc97dc9-d05b-4982-b765-a3e761a6d604" alt="softhand" width="100%">
+    </td>
+  </tr>
+</table>
