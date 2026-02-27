@@ -160,18 +160,22 @@ The demos below illustrate these tracking capabilities of the MS-Human model:
 <table>
   <tr>
     <td align="center" width="25%">
-      <video src="https://github.com/user-attachments/assets/f15e68c4-4dbd-4374-90f4-27dd196d57cc" width="100%" controls autoplay loop muted></video>
+      <img src="https://github.com/user-attachments/assets/0350ff08-2ab3-4019-a4be-bef6fbc276ad" alt="running_overlap" width="100%"><br>
+      Running: Overlap
     </td>
     <td align="center" width="25%">
-      <video src="https://github.com/user-attachments/assets/d0961f7a-18c5-49a6-bb24-09b6da265a19" width="100%" controls autoplay loop muted></video>
+      <img src="https://github.com/user-attachments/assets/16084e8c-41f5-45a3-96b7-b69307c78e0c" alt="running_separate" width="100%"><br>
+      Running: Separate
     </td>
   </tr>
   <tr>
     <td align="center" width="25%">
-      <video src="https://github.com/user-attachments/assets/fb996165-4fa3-4182-a17e-aed417e5be65" width="100%" controls autoplay loop muted></video>
+      <img src="https://github.com/user-attachments/assets/9aea44e9-3277-4d81-a096-6865e2dcc5e4" alt="walking_ovelap" width="100%"><br>
+      Walking: Overlap
     </td>
     <td align="center" width="25%">
-      <video src="https://github.com/user-attachments/assets/28e6b539-9763-4cb0-8093-b91c8ac9327c" width="100%" controls autoplay loop muted></video>
+      <img src="https://github.com/user-attachments/assets/9c32033c-0ca6-4b0c-a6fd-f61f66481ee9" alt="walking_separate" width="100%"><br>
+      Walking: Separate
     </td>
   </tr>
 </table>
@@ -181,7 +185,7 @@ The demos below illustrate these tracking capabilities of the MS-Human model:
 <table>
   <tr>
     <td align="center" width="40%">
-      <video src="https://github.com/user-attachments/assets/3e46de52-ca3a-4c2d-b042-372a6a630e65" width="100%" controls autoplay loop muted></video>
+      <img src="https://github.com/user-attachments/assets/e152a6ad-91c3-469f-ae5f-3a4f4747ac82" alt="softfoot" width="100%">
     </td>
     <td align="center" width="55%">
       <img src="https://github.com/user-attachments/assets/ccc97dc9-d05b-4982-b765-a3e761a6d604" alt="softhand" width="100%">
