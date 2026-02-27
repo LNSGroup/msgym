@@ -119,7 +119,7 @@ This project is released under the [Apache-2.0 License](LICENSE).
 
 ## Citation
 
-If you use MS-Human-700 or msgym in academic work, please cite:
+If you use MS-Human-700 or msgym, please cite our ICRA 2024 paper and other related ones.
 
 ```bibtex
 @inproceedings{zuo2024self,
@@ -132,7 +132,7 @@ If you use MS-Human-700 or msgym in academic work, please cite:
 }
 ```
 
-## Control Demo
+## Control Demos
 
 [**DynSyn**](https://github.com/Beanpow/DynSyn) control results:
 
@@ -141,6 +141,7 @@ If you use MS-Human-700 or msgym in academic work, please cite:
   <img src="pictures/loco_legs_gif.gif" width="32%">
   <img src="pictures/mani_gif.gif" width="32%">
 </div>
+<br><br>
 
 [**QFlex**](https://lnsgroup.cc/research/Qflex) control results:
 
@@ -148,10 +149,11 @@ If you use MS-Human-700 or msgym in academic work, please cite:
   <img src="pictures/run_gif.gif" width="49%">
   <img src="pictures/dance_gif.gif" width="49%">
 </div>
+<br><br>
 
 **High-Fidelity Motion Tracking** results: 
 
-Leveraging MuJoCo Warp for massively parallel GPU simulation enables the rapid and efficient training of control policies capable of high-precision motion tracking across diverse and dynamic trajectories.
+Leveraging MuJoCo Warp for massively parallel **GPU** simulation enables the rapid and efficient training of control policies capable of high-precision motion tracking across diverse and dynamic trajectories.
 
 The demos below illustrate these tracking capabilities of the MS-Human model:
 *   **Overlap**: The model and reference trajectory are rendered directly to visualize tracking accuracy.
