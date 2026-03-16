@@ -1,6 +1,7 @@
 from typing import Any, Callable, List, Optional
 import os
 import sys
+import site
 import numpy as np
 from gymnasium import spaces
 import mujoco
@@ -28,26 +29,37 @@ def action_obs_check(cls: Any) -> None:
 def get_ms_human_model_path(filename: str) -> str:
     """Resolve path to an MS-Human-700 XML model file.
 
-    Tries two locations:
+    Tries multiple locations:
     1. Relative to the source tree (for editable / local installs).
-    2. Under sys.prefix/MS-Human-700 (for wheels using data_files).
+    2. Under sys.prefix/MS-Human-700 (for some data_files installs).
+    3. Under each site-packages/dist-packages directory.
     """
+    tried: List[str] = []
+
     # 1. Source / editable install: project_root/MS-Human-700/<filename>
     src_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
     candidate = os.path.join(src_root, "MS-Human-700", filename)
+    tried.append(candidate)
     if os.path.exists(candidate):
         return candidate
 
     # 2. Installed via data_files: sys.prefix/MS-Human-700/<filename>
     candidate = os.path.join(sys.prefix, "MS-Human-700", filename)
+    tried.append(candidate)
     if os.path.exists(candidate):
         return candidate
 
-    raise ValueError(
-        "Could not locate MS-Human-700 model file. Tried:\n"
-        f"- {os.path.join(src_root, 'MS-Human-700', filename)}\n"
-        f"- {os.path.join(sys.prefix, 'MS-Human-700', filename)}"
-    )
+    # 3. site-packages / dist-packages locations (e.g. Colab)
+    for base in site.getsitepackages() + [site.getusersitepackages()]:
+        if not base:
+            continue
+        candidate = os.path.join(base, "MS-Human-700", filename)
+        tried.append(candidate)
+        if os.path.exists(candidate):
+            return candidate
+
+    tried_str = "\n".join(f"- {path}" for path in tried)
+    raise ValueError(f"Could not locate MS-Human-700 model file. Tried:\n{tried_str}")
 
 def get_observation_space(
     xml_path: str,
