@@ -30,6 +30,18 @@ dynsyn = [
     "setuptools<81",
 ]
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = [".", "DynSyn-SAC"]
 include = ["msgym*", "DynSyn*"]
+
+[tool.setuptools.data-files]
+"MS-Human-700" = [
+    "MS-Human-700/README.md",
+    "MS-Human-700/LICENSE",
+    "MS-Human-700/**/*.xml",
+    "MS-Human-700/**/*.obj",
+    "MS-Human-700/**/*.stl",
+]
