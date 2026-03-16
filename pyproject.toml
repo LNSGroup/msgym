@@ -38,13 +38,4 @@ where = [".", "DynSyn-SAC"]
 include = ["msgym*", "DynSyn*"]
 
 [tool.setuptools.package-data]
-"msgym" = ["MS-Human-700/**/*"]
-
-[tool.setuptools.data-files]
-"MS-Human-700" = [
-    "MS-Human-700/README.md",
-    "MS-Human-700/LICENSE",
-    "MS-Human-700/**/*.xml",
-    "MS-Human-700/**/*.obj",
-    "MS-Human-700/**/*.stl",
-]
+msgym = ["MS-Human-700/**/*"]

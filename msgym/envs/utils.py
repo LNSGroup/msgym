@@ -1,7 +1,6 @@
 from typing import Any, Callable, List, Optional
+from importlib import resources
 import os
-import sys
-import site
 import numpy as np
 from gymnasium import spaces
 import mujoco
@@ -27,39 +26,28 @@ def action_obs_check(cls: Any) -> None:
 
 
 def get_ms_human_model_path(filename: str) -> str:
-    """Resolve path to an MS-Human-700 XML model file.
+    """Return absolute path to an MS-Human-700 model file.
 
-    Tries multiple locations:
-    1. Relative to the source tree (for editable / local installs).
-    2. Under sys.prefix/MS-Human-700 (for some data_files installs).
-    3. Under each site-packages/dist-packages directory.
+    Primary location: inside msgym package (package-data).
+    Fallback: project root MS-Human-700 directory (for local dev).
     """
-    tried: List[str] = []
+    # 1) Installed package-data: msgym/MS-Human-700/<filename>
+    root = resources.files("msgym") / "MS-Human-700"
+    candidate = root / filename
+    if candidate.is_file():
+        return str(candidate)
 
-    # 1. Source / editable install: project_root/MS-Human-700/<filename>
-    src_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-    candidate = os.path.join(src_root, "MS-Human-700", filename)
-    tried.append(candidate)
-    if os.path.exists(candidate):
-        return candidate
+    # 2) Local editable clone: <project_root>/MS-Human-700/<filename>
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    candidate2 = os.path.join(project_root, "MS-Human-700", filename)
+    if os.path.isfile(candidate2):
+        return candidate2
 
-    # 2. Installed via data_files: sys.prefix/MS-Human-700/<filename>
-    candidate = os.path.join(sys.prefix, "MS-Human-700", filename)
-    tried.append(candidate)
-    if os.path.exists(candidate):
-        return candidate
-
-    # 3. site-packages / dist-packages locations (e.g. Colab)
-    for base in site.getsitepackages() + [site.getusersitepackages()]:
-        if not base:
-            continue
-        candidate = os.path.join(base, "MS-Human-700", filename)
-        tried.append(candidate)
-        if os.path.exists(candidate):
-            return candidate
-
-    tried_str = "\n".join(f"- {path}" for path in tried)
-    raise ValueError(f"Could not locate MS-Human-700 model file. Tried:\n{tried_str}")
+    raise ValueError(
+        "MS-Human-700 model file not found. Tried:\n"
+        f"- {candidate}\n"
+        f"- {candidate2}"
+    )
 
 def get_observation_space(
     xml_path: str,

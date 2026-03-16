@@ -1,11 +1,15 @@
-import os
 from typing import Any, Dict, Optional, Tuple
 import numpy as np
 import mujoco
 from gymnasium import spaces
 from gymnasium.envs.mujoco.mujoco_env import MujocoEnv
 from gymnasium.utils import EzPickle, seeding
-from msgym.envs.utils import action_obs_check, euler2quat, get_render_fps
+from msgym.envs.utils import (
+    action_obs_check,
+    euler2quat,
+    get_ms_human_model_path,
+    get_render_fps,
+)
 
 class ManipulationEnvV1(MujocoEnv, EzPickle):
     """Right-arm manipulation environment: reach, lift, and orient an object to a target."""
@@ -50,8 +54,7 @@ class ManipulationEnvV1(MujocoEnv, EzPickle):
         """
         if reward_dict is None:
             reward_dict = self.DEFAULT_RWD_KEYS_AND_WEIGHTS
-        model_path = os.path.join(os.path.dirname(__file__), "..", "..", "MS-Human-700", "MS-Human-700-Manipulation.xml")
-        model_path = os.path.abspath(model_path)
+        model_path = get_ms_human_model_path("MS-Human-700-Manipulation.xml")
         
         assert render_mode is None or render_mode in self.metadata["render_modes"]
 
@@ -89,7 +92,6 @@ class ManipulationEnvV1(MujocoEnv, EzPickle):
             observation_space=observation_space,
             render_mode=render_mode,
             camera_name="record_camera",
-            max_geom=10000,
             **kwargs,
         )
 
