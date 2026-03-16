@@ -1,3 +1,3 @@
-[submodule "MS-Human-700"]
-	path = MS-Human-700
+[submodule "msgym/MS-Human-700"]
+	path = msgym/MS-Human-700
 	url = https://github.com/LNSGroup/MS-Human-700.git
