@@ -1,4 +1,6 @@
 from typing import Any, Callable, List, Optional
+from importlib import resources
+import os
 import numpy as np
 from gymnasium import spaces
 import mujoco
@@ -21,6 +23,31 @@ def action_obs_check(cls: Any) -> None:
     high = cls.observation_space.high
     if (low == high).any():
         raise ValueError("Observation space has the same low and high value")
+
+
+def get_ms_human_model_path(filename: str) -> str:
+    """Return absolute path to an MS-Human-700 model file.
+
+    Primary location: inside msgym package (package-data).
+    Fallback: project root MS-Human-700 directory (for local dev).
+    """
+    # 1) Installed package-data: msgym/MS-Human-700/<filename>
+    root = resources.files("msgym") / "MS-Human-700"
+    candidate = root / filename
+    if candidate.is_file():
+        return str(candidate)
+
+    # 2) Local editable clone: <project_root>/MS-Human-700/<filename>
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    candidate2 = os.path.join(project_root, "MS-Human-700", filename)
+    if os.path.isfile(candidate2):
+        return candidate2
+
+    raise ValueError(
+        "MS-Human-700 model file not found. Tried:\n"
+        f"- {candidate}\n"
+        f"- {candidate2}"
+    )
 
 def get_observation_space(
     xml_path: str,

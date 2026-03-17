@@ -30,6 +30,15 @@ dynsyn = [
     "setuptools<81",
 ]
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = [".", "DynSyn-SAC"]
 include = ["msgym*", "DynSyn*"]
+
+[tool.setuptools.package-data]
+msgym = [
+       "MS-Human-700/**/*",
+       "motion_data/*.npz",
+   ]

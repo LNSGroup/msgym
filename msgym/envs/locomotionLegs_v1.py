@@ -6,7 +6,7 @@ from gymnasium import spaces
 from gymnasium.envs.mujoco.mujoco_env import MujocoEnv
 from gymnasium.utils import EzPickle, seeding
 from msgym.envs.imitation_trajectory import LocomotionCycleTrajectory
-from msgym.envs.utils import action_obs_check, get_render_fps
+from msgym.envs.utils import action_obs_check, get_render_fps, get_ms_human_model_path
 
 class LocomotionLegsEnvV1(MujocoEnv, EzPickle):
     """Legs-only locomotion imitation: track reference motion from .npz trajectory (single or multiple)."""
@@ -58,8 +58,7 @@ class LocomotionLegsEnvV1(MujocoEnv, EzPickle):
         """
         if reward_dict is None:
             reward_dict = self.DEFAULT_RWD_KEYS_AND_WEIGHTS
-        model_path = os.path.join(os.path.dirname(__file__), "..", "..","MS-Human-700", "MS-Human-700-Locomotion.xml")
-        model_path = os.path.abspath(model_path)
+        model_path = get_ms_human_model_path("MS-Human-700-Locomotion.xml")
 
         assert render_mode is None or render_mode in self.metadata["render_modes"]
         fps = get_render_fps(model_path, skip_frames)
@@ -322,8 +321,7 @@ class LocomotionLegsEnvV1(MujocoEnv, EzPickle):
 
     def _get_model_mapping(self) -> None:
         """Build joint/body index mappings between full and reduced models."""
-        full_model_path = os.path.join(os.path.dirname(__file__), "..", "..", "MS-Human-700", "MS-Human-700.xml")
-        full_model_path = os.path.abspath(full_model_path)
+        full_model_path = get_ms_human_model_path("MS-Human-700.xml")
         full_model = mujoco.MjModel.from_xml_path(full_model_path)
         full_body_name_list = [full_model.body(body_id).name for body_id in range(full_model.nbody)]
         full_joint_name_list = [full_model.joint(jnt_id).name for jnt_id in range(full_model.njnt)]
